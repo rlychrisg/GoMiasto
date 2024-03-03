@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMiasto</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameHeader">
+        <h1>
+            GoMiasto
+            <button id="aboutIcon" class="icons">
+                <img src="media/about.png" alt="about icon. a question mark">
+            </button>
+            <button id="settingsIcon" class="icons">
+                <img src="./media/settings.png" alt="settings icon. a silhouette of a wrench">
+            </button>
+        </h1>
+    </div>
+
+    <div id=mapBox>
+    </div>
+
+    <div id="guessBox">
+        <div class="flexrow">
+            <!-- ! the way the wrapper is set up is confusing! -->
+            <!-- the indentation should explain how it's supposed to work -->
+            <div class="autocomplete-wrapper" id="autoCompleteWrapper">
+                <form action="" autocomplete="off">
+                <input type="text" id="cityInput" placeholder="Enter Guess">
+            </div>
+            <button type="submit" class="buttons" id="submitBtn">Guess</button>
+            </form>
+        </div>
+
+        <table id="guessesTable">
+            <tr>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- modal boxes -->
+    <dialog id="chooseGameBox" class="modal">
+            <h2>Select Game</h2>
+            <ul class="gameTypeList">
+                <li>
+                    <button type="button" class="gameTypeBtn" id="gameTypeUkCities">UK Cities</button>
+                </li>
+                <li>
+                    <button type="button" class="gameTypeBtn" id="gameTypeUsCities">US Cities</button>
+                </li>
+                <li>
+                    <button type="button" class="gameTypeBtn" id="gameTypeMcrMetro">Manchester Metrolink</button>
+                </li>
+            </ul>
+    </dialog>
+
+    <dialog id="settingsBox" class="modal">
+            <h2>Select Unit</h2>
+
+            <div class="radioContainerContainer">
+                <div class="radioContainer">
+                    <input type="radio" class="radioButton" id="metric" name="measurement" value="metric">
+                    <label for="metric">Metric</label><br>
+
+                    <input type="radio" class="radioButton" id="imperial" name="measurement" value="imperial" checked>
+                    <label for="imperial">Imperial</label><br>
+                </div>
+            </div>
+            <button type="button" class="buttons" id="closeSettings">Ok</button>
+    </dialog>
+
+    <dialog id="endGame" class="modal">
+        <h2 id="endGameHeader"></h2>
+        <p id="endGamePara"></p>
+        <button type="button" class="buttons" id="playAgain">Play Again</button>
+        <button type="button" class="buttons" id="shareBtn">Share</button>
+    </dialog>
+
+    <dialog id="aboutBox" class="modal">
+        <h2></h2>
+        <p>Guess a city or location to win. You have only 6 attempts, but each incorrect guess will give you the distance and direction to help with your next guess. Distance is given 'as the crow flies' and the location of the pin drop will typically be the city centre. Only valid answers can be submitted but if you're unsure then suggestions will pop up once you start typing.</p>
+        <p>Want to play a location that isn't provided yet? Feel free to request or contribute your ideas on the Github page.</p>
+        <p>Oh and one more thing, try to avoid double clicking the map. I guess the markers don't like it so they run away. Sure, maybe it is a little skittish but I think they bring a lot to the user experience and they're happy to do it for free, so please just give them a break, yeah?</p>
+        <button type="button" class="buttons" id="closeAbout">Close</button>
+    </dialog>
+
+    <dialog id="invalidGuessBox" class="modal">
+        <h2>Invalid Guess!</h2>
+        <p>If you are unsure just start typing and choose from options in the drop down menu</p>
+    </dialog>
+
+    </div>
+    <canvas id="confetti"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="gomiasto.js"></script>
+</body>
+</html>

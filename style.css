@@ -1,0 +1,249 @@
+:root {
+    --background: #24273a;
+    --background-alt: #363a4f;
+    --border: #1c1f2d;
+    --foreground: #dfe6fe;
+    --foreground-alt: #fcad;
+    --highlight: #f4dbd6;
+    --action: #a6da95;
+    --action-highlight: #c0eab3;
+}
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+html {
+}
+body {
+    text-align: center;
+    font-family: system-ui, sans-serif;
+    background: var(--background);
+    font-size: 1.2rem;
+}
+h1 {
+    color: var(--foreground-alt);
+    font-size: 3rem;
+    letter-spacing: -0.1rem;
+}
+h2 {
+    color: var(--foreground-alt);
+    font-size: 2rem;
+    letter-spacing: -0.1rem;
+    padding: 0.2em;
+}
+p {
+    color: var(--foreground);
+    padding: 0.4em;
+}
+#gameHeader {
+    background: var(--background-alt);
+    border: 2px solid var(--border);
+    max-width: 500px;
+    margin: auto;
+}
+
+.icons {
+    background: none;
+    border: none;
+    padding: 0.1em;
+    height: 2.0rem;
+    cursor: pointer;
+}
+.icons:focus, .icons:active, .icons:hover {
+    background: none;
+    outline: 1px solid var(--highlight);
+}
+
+:focus{
+    outline: 1px solid var(--highlight) ;
+}
+
+#mapBox {
+    position: relative;
+    margin: auto;
+    overflow: none;
+    background: none;
+    height: 400px;
+}
+.map {
+    opacity: 0.2;
+   z-index: 50;
+}
+#mapPic {
+    height: 100%;
+    position: relative;
+    opacity: 80%;
+}
+#markerPane {
+    z-index:999;
+}
+#guessBox {
+    padding: 0.3em;
+    text-align: center;
+    margin: auto;
+    max-width: 500px;
+    background: var(--background-alt);
+    border: 2px solid var(--border);
+    border-radius: 5px;
+}
+button {
+    border-radius: 5px;
+    color: var(--border);
+    padding: 0.2em 0.5em;
+    background: var(--action);
+    cursor: pointer;
+}
+button:hover, .buttons:focus {
+    background: var(--action-highlight);
+}
+
+.flexrow {
+    display: flex;
+    justify-content: center;
+}
+input {
+    font-size: 1.1rem;
+    flex: 1;
+    padding: 0.2em;
+    color: var(--foreground);
+    background: var(--background);
+    border: 2px solid var(--border);
+    border-radius:5px;
+}
+input::placeholder {
+    color: var(--highlight);
+}
+#submitBtn {
+    font-size: 1.1rem;
+}
+.autocomplete-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.autocomplete-list {
+    list-style: none;
+    padding: unset;
+    margin: unset;
+    position: absolute;
+    width: 100%;
+}
+.autocomplete-list li {
+    background: var(--background-alt);
+    padding: unset;
+    border: 2px solid var(--border);
+    border-top: unset;
+}
+.autocomplete-list button {
+    font-size: 1.1em;
+    border: 0px;
+    padding: 0.2em;
+    color: var(--foreground);
+    background: unset;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: Left;
+}
+.autocomplete-list button:hover, button:focus {
+  background-color: var(--highlight) ;
+  color: var(--border);
+}
+
+table {
+    width: 100%;
+    color: var(--foreground);
+}
+@media (max-width: 600px) {
+    tr {
+    font-size: 1rem;
+    line-height: 2rem;
+    }
+}
+td {
+    /* border: 1px solid #000; */
+    padding: 0em 0.2em;
+    align: center;
+}
+td:nth-child(1) {
+    width: 0.5em;
+}
+td:nth-child(2) {
+}
+td:nth-child(3) {
+    width: 5em;
+}
+td:nth-child(4) {
+    width: 1em;
+    vertical-align: middle;
+}
+#tableArrow {
+    margin-top: 0.4em;
+    }
+
+.modal {
+    background: var(--background-alt);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    width: 98%;
+    margin: auto;
+    margin-top: 5%;
+
+    animation: 0.5s ease-in 0s 1 running fadeIn;
+}
+@keyframes fadeIn {
+    0%{opacity: 0;}
+    100%{opacity: 100;}
+}
+.modal::backdrop {
+    background: black;
+    opacity: 0.4;
+}
+#chooseGameBox {
+    max-width: 20rem;
+}
+#aboutBox {
+    max-width: 30rem;
+}
+#settingsBox {
+    max-width: 20rem;
+}
+#endGame {
+    max-width: 20rem;
+}
+#invalidGuessBox {
+    animation: none;
+    max-width: 40rem;
+    margin-top: -20%;
+}
+#invalidGuessBox::backdrop {
+    background: none;
+}
+.gameTypeList {
+    list-style: none;
+    margin: unset;
+    padding: 0.2em;
+}
+.gameTypeBtn {
+    width: 90%;
+    border: 2px solid var(--border);
+    padding: 0.2em;
+    font-size: 1.3rem;
+    background: var(--action);
+}
+.gameTypeBtn:focus {
+    background: var(--action-highlight);
+}
+
+.radioContainerContainer {
+display: flex;
+justify-content: center;
+}
+.radioContainer {
+    text-align: left;
+    color: var(--foreground);
+    font-size: 1.2rem;
+}
+
+
+
