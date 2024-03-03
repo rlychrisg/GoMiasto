@@ -828,7 +828,7 @@ function popUp(header, para) {
     endGameHeader.textContent = header;
     endGamePara.textContent = para;
 
-    let copyText = `I just got a streak of ${streakNo} on #GoMiasto - ${selectedGame}.`;
+    let copyText = `I just got a streak of ${streakNo} on #GoMiasto - ${selectedGame}. \n\nPlay for free at https://rlychrisg.github.io/GoMiasto/`;
     // boiler plate code to copy to clipboard
     const copyContent = async () => {
         try {
