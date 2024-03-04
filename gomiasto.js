@@ -562,7 +562,7 @@ answerListFull = [{name: "Birmingham", lat: "52.485596374699405", lon: "-1.89242
 
 
 // position leaflet map over the map image
-function setMap(mbWidth, mbZoom, mbLat, mbLon, mbSrc) {
+function setMap(mbWidth, mbZoom, mbLat, mbLon, mbSrc, mbAlt) {
     mapBox.style.width = `${mbWidth}px`;
     map = L.map('mapBox', {dragging: false,
         maxZoom : mbZoom,
@@ -572,6 +572,7 @@ function setMap(mbWidth, mbZoom, mbLat, mbLon, mbSrc) {
     mapPic = document.createElement('img');
     mapPic.src = `media/${mbSrc}.png`;
     mapPic.id = 'mapPic';
+    mapPic.alt = `${mbAlt}`;
     mapBox.appendChild(mapPic);
 }
 
@@ -582,18 +583,19 @@ function setMap(mbWidth, mbZoom, mbLat, mbLon, mbSrc) {
 // hence this mess...
 function createGameUk() {
     selectedGame = "UK Cities";
+    mapAlt = "A silhouette of the United Kingdom";
     if (window.innerHeight < 599) {
         mapBox.style.height = '242px';
-        setMap(260, 4.3, 54.646, -3.4, 'uk_400');
+        setMap(260, 4.3, 54.646, -3.4, 'uk_400', mapAlt);
     } else if (window.innerHeight >= 600 && window.innerHeight < 799) {
         mapBox.style.height = '345px';
-        setMap(260, 4.8, 54.646, -3.34, 'uk_400');
+        setMap(260, 4.8, 54.646, -3.34, 'uk_400', mapAlt);
     } else if (window.innerHeight >= 800 && window.innerHeight < 1079) {
         mapBox.style.height = '400px';
-        setMap(260, 5, 54.646, -3.34, 'uk_400');
+        setMap(260, 5, 54.646, -3.34, 'uk_400', mapAlt);
     } else {
         mapBox.style.height = '562px';
-        setMap(365, 5.5, 54.64, -3.34, 'uk_400');
+        setMap(365, 5.5, 54.64, -3.34, 'uk_400', mapAlt);
     }
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
     answersArray = answerList.map((a) => { // this is for the autocomplete
@@ -603,29 +605,30 @@ function createGameUk() {
 
 function createGameUs() {
     selectedGame = "US Cities";
+    mapAlt = "A silhouette of the USA";
     goHead = document.getElementById('gameHeader');   // because i left too much white space on top of usa.png
     goHead.style.marginBottom = '0px';              // and this is easier than lining up a modified verion
     if (window.innerWidth < 374) {
         mapBox.style.height = '151px';
-        setMap(310, 2.6, 38.646, -96.04, 'usa_400');
+        setMap(310, 2.6, 38.646, -96.04, 'usa_400', mapAlt);
     } else if (window.innerWidth >= 375 && window.innerWidth < 439) {
         mapBox.style.height = '174px';
-        setMap(360, 2.8, 38.646, -96.04, 'usa_400');
+        setMap(360, 2.8, 38.646, -96.04, 'usa_400', mapAlt);
     } else if (window.innerWidth >= 440 && window.innerWidth < 539) {
         mapBox.style.height = '215px';
-        setMap(430, 3.1, 38.646, -96.04, 'usa_400');
+        setMap(430, 3.1, 38.646, -96.04, 'usa_400', mapAlt);
     } else if (window.innerWidth >= 540 && window.innerWidth < 654) {
         mapBox.style.height = '263px';
-        setMap(530, 3.4, 38.646, -96.04, 'usa_400');
+        setMap(530, 3.4, 38.646, -96.04, 'usa_400', mapAlt);
     } else if (window.innerWidth >= 655 && window.innerWidth < 990) {
         mapBox.style.height = '324px';
-        setMap(648, 3.7, 38.646, -96.04, 'usa_400');
+        setMap(648, 3.7, 38.646, -96.04, 'usa_400', mapAlt);
     } else if (window.innerWidth >= 800 && window.innerHeight < 900) {
         mapBox.style.height = '324px';
-        setMap(648, 3.7, 38.646, -96.04, 'usa_400');
+        setMap(648, 3.7, 38.646, -96.04, 'usa_400', mapAlt);
     } else {
         mapBox.style.height = '491px';
-        setMap(980, 4.3, 38.646, -96.04, 'usa_400');
+        setMap(980, 4.3, 38.646, -96.04, 'usa_400', mapAlt);
     }
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
     answersArray = answerList.map((a) => { // for autocomplete
@@ -635,27 +638,28 @@ function createGameUs() {
 
 function createGameMcr() {
     selectedGame = "Manchester Metrolink";
+    mapAlt = "A silhouette of the Greater Manchester";
     if (window.innerWidth <= 380) {
         mapBox.style.height = '228px';
-        setMap(315, 9.0, 53.506, -2.318, 'metro');
+        setMap(315, 9.0, 53.506, -2.318, 'metro', mapAlt);
     } else if (window.innerWidth > 380 && window.innerWidth <= 460) {
         mapBox.style.height = '261px';
-        setMap(370, 9.2, 53.506, -2.318, 'metro');
+        setMap(370, 9.2, 53.506, -2.318, 'metro', mapAlt);
     } else if (window.innerWidth > 460 && window.innerWidth <= 545) {
         mapBox.style.height = '323px';
-        setMap(450, 9.5, 53.506, -2.318, 'metro');
+        setMap(450, 9.5, 53.506, -2.318, 'metro', mapAlt);
     } else if (window.innerWidth > 460 && window.innerWidth <= 545) {
         mapBox.style.height = '397px';
-        setMap(535, 9.8, 53.506, -2.318, 'metro');
+        setMap(535, 9.8, 53.506, -2.318, 'metro', mapAlt);
     } else if (window.innerWidth > 545 && window.innerHeight <= 900) {
         mapBox.style.height = '397px';
-        setMap(535, 9.8, 53.506, -2.318, 'metro');
+        setMap(535, 9.8, 53.506, -2.318, 'metro', mapAlt);
     } else if (window.innerWidth > 545 && window.innerWidth <= 765 && window.innerHeight > 900) {
         mapBox.style.height = '397px';
-        setMap(535, 9.8, 53.506, -2.318, 'metro');
+        setMap(535, 9.8, 53.506, -2.318, 'metro', mapAlt);
     } else {
         mapBox.style.height = '458px';
-        setMap(621, 10, 53.506, -2.318, 'metro');
+        setMap(621, 10, 53.506, -2.318, 'metro', mapAlt);
     }
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
     answersArray = answerList.map((a) => { // for autocomplete
