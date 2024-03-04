@@ -565,10 +565,12 @@ answerListFull = [{name: "Birmingham", lat: "52.485596374699405", lon: "-1.89242
 function setMap(mbWidth, mbZoom, mbLat, mbLon, mbSrc, mbAlt) {
     mapBox.style.width = `${mbWidth}px`;
     map = L.map('mapBox', {dragging: false,
+
         maxZoom : mbZoom,
         minZoom : mbZoom,
         zoomControl: false,
     } ).setView([mbLat, mbLon], mbZoom);
+    L.DomEvent.disableClickPropagation(map);
     mapPic = document.createElement('img');
     mapPic.src = `media/${mbSrc}.png`;
     mapPic.id = 'mapPic';
