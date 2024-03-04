@@ -1,5 +1,8 @@
 # GoMiasto
 
+## A quick note on the map zoom issues
+A few people have mentioned issues with the map on mobile screens. The problem is that this works by fixing a map image to a Leaflet layer, so the position and zoom has to be completely locked down. While zooming on the browser works fine, pinch zoom on the mobiles causes problems that I just don't know how to fix. I thought this was a really clever way to avoid using custom map tiles, which would be far too overcomplicated for this use case. Sadly not. **The solution** is just doing without the Leaflet API and instead manually positioning the markers. Initially, it's more work, but once it's done it will give me greater control over responsive design and accesability.
+
 ## How to Play
 
 [Click here to play](https://rlychrisg.github.io/GoMiasto/)
