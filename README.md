@@ -1,6 +1,9 @@
 # GoMiasto
 
 ## How to Play
+
+[Click here to play](https://rlychrisg.github.io/GoMiasto/)
+
 Guess a city or location to win. You have only 6 attempts, but each incorrect guess will give you the distance and direction to help with your next guess. Distance is given 'as the crow flies' and the location of the pin drop will typically be the city centre. Only valid answers can be submitted but if you're unsure then suggestions will pop up once you start typing.
 
 Want to play a location that isn't provided yet? Feel free to request or contribute your ideas on the Github page.
