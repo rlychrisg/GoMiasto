@@ -833,7 +833,7 @@ function convertUnits(unit) {
     let rowCount = document.getElementById('guessesTable').rows.length;
     console.log(`got rowcount ${rowCount}`);
     for (let i = 0; i < rowCount; i++) {
-        let cellId = "distanceCell" + i; // each row gives it's distance cell a unique id
+        let cellId = "distanceCell" + i; // each row gives its distance cell a unique id
         console.log(`cellid is ${cellId}`);
         let cell = document.getElementById(cellId);
         if (cell) {
