@@ -690,8 +690,8 @@ function clearTable() {
       layer.remove();
     });
     // pick an answer at random
-    answer = answerList[(Math.floor(Math.random() * answerList.length))];
     guessNo = 1;
+    answer = answerList[(Math.floor(Math.random() * answerList.length))];
     // answer = getTheDeets('leeds');  // leave this in and uncomment if i need to fix the game
     console.log('new game started');
 }
@@ -829,12 +829,23 @@ function getCompassDirection(degree) {
 }
 
 // endgame popup window
-function popUp(header, para) {
+function popUp(result) {
     endGame.showModal();
-    endGameHeader.textContent = header;
-    endGamePara.textContent = para;
+    if (result === 'win') {
+        endGameHeader.textContent = "Correct!";
+        if (guessNo == 1) {
+            endGamePara.textContent = `What are the odds? You got ${answer.name} on the first try! That brings your streak to ${streakNo}!`
+            copyText = `I just got ${answer.name} on the first go in #GoMiasto - ${selectedGame}, with a win streak of ${streakNo}! \n\nhttps://rlychrisg.github.io/gomiasto/`
+        } else {
+            endGamePara.textContent = `That's correct, it's ${answer.name}! You got this round in ${guessNo} attempts, bringing your win streak to ${streakNo}!`
+            copyText = `I just guessed ${answer.name} in ${guessNo} attempts on #GoMiasto - ${selectedGame}! That brings my win streak to ${streakNo}. \n\nhttps://rlychrisg.github.io/gomiasto/`;
+        }
+    } else {
+        endGameHeader.textContent = "Game Over!";
+        endGamePara.textContent = `Unlucky, the correct answer was ${answer.name}. Your win streak was ${streakNo}`
 
-    let copyText = `I just got a streak of ${streakNo} on #GoMiasto - ${selectedGame}. \n\nPlay for free at https://rlychrisg.github.io/GoMiasto/`;
+        copyText = `Curse you, ${answer.name}!! I just lost a streak of ${streakNo} in #GoMiasto - ${selectedGame}! \n\nhttps://rlychrisg.github.io/GoMiasto/`;
+    }
     // boiler plate code to copy to clipboard
     const copyContent = async () => {
         try {
@@ -845,6 +856,8 @@ function popUp(header, para) {
             console.error('Failed to copy: ', err);
             share.textContent = 'Failed';
         }
+        sleep(2000).then(() => { share.textContent = 'Share'; });
+
     }
 
     const share = document.getElementById('shareBtn');
@@ -856,6 +869,11 @@ function popUp(header, para) {
         clearTable();
     }
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 // some variables..
 let distance;
@@ -876,9 +894,9 @@ function processGuess($event) {
                   confettiRadius: 3,
                   confettiNumber: 500,
             })
-            popUp("Correct!", `Congrats, you got this round in ${guessNo} attempts, bringing your win streak to ${streakNo}!`);
+            popUp('win');
         } else if (guessNo === maxGuesses) {
-            popUp("Game Over!", `Unlucky, the correct answer was ${answer.name}. Your win streak was ${streakNo}`);
+            popUp('lose');
             streakNo = 0;
         // for incorrect guesses
         } else if (guess.name) {
@@ -921,11 +939,13 @@ function processGuess($event) {
             const cell4 = newRow.insertCell(3);
             cell1.innerHTML = `${guessNo}/${maxGuesses}`;
             cell2.innerHTML = guess.name;
+            cell2.id = `nameCell${guessNo}`;
             if (unit === 'imperial') {
                 cell3.innerHTML = `${Math.round(distance.miles * 10) / 10} mi`;
             } else {
                 cell3.innerHTML = `${Math.round(distance.km * 10) / 10} km`;
             }
+            cell3.id = `distanceCell${guessNo}`;
             cell4.innerHTML = ' ';
             cell4.appendChild(arrow);
 
@@ -972,10 +992,6 @@ closeSettings.addEventListener('click', () => {
 function invalidGuess() {
     // just show, because user should be able to click back on the input
     invalidGuessBox.show();
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
 
     sleep(2000).then(() => { invalidGuessBox.close(); });
     }
