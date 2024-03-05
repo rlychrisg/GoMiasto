@@ -979,11 +979,6 @@ settingsIcon.addEventListener('click', () => {
 })
 document.getElementById('metric').addEventListener('click', function() {
     unit = 'metric';
-    distCell2 = document.getElementById('distanceCell2').innerHTML;
-    distCell2 = parseFloat(distCell2);
-    const milesToKm = miles => miles * 1.609344;
-    distCell2 = Math.round(milesToKm(distCell2) * 10) / 10;
-    document.getElementById('distanceCell2').innerHTML = `${distCell2} km`;
 });
 document.getElementById('imperial').addEventListener('click', function() {
     unit = 'imperial';
