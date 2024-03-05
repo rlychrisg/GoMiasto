@@ -692,7 +692,7 @@ function clearTable() {
     // pick an answer at random
     guessNo = 1;
     answer = answerList[(Math.floor(Math.random() * answerList.length))];
-    // answer = getTheDeets('leeds');  // leave this in and uncomment if i need to fix the game
+    // answer = getTheDeets('salford');  // leave this in and uncomment if i need to fix the game
     console.log('new game started');
 }
 
@@ -828,6 +828,29 @@ function getCompassDirection(degree) {
     return;
 }
 
+
+function convertUnits(unit) {
+    let rowCount = document.getElementById('guessesTable').rows.length;
+    console.log(`got rowcount ${rowCount}`);
+    for (let i = 0; i < rowCount; i++) {
+        let cellId = "distanceCell" + i; // each row gives it's distance cell a unique id
+        console.log(`cellid is ${cellId}`);
+        let cell = document.getElementById(cellId);
+        if (cell) {
+
+            let distance = parseFloat(cell.textContent);
+
+            if (unit === "miles") {
+                distance = distance * 0.621371;
+                cell.textContent = `${distance.toFixed(1)} mi`;
+            } else if (unit === "km") {
+                distance = distance * 1.60934;
+                cell.textContent = `${distance.toFixed(1)} km`;
+            }
+        }
+    }
+}
+
 // endgame popup window
 function popUp(result) {
     endGame.showModal();
@@ -939,13 +962,13 @@ function processGuess($event) {
             const cell4 = newRow.insertCell(3);
             cell1.innerHTML = `${guessNo}/${maxGuesses}`;
             cell2.innerHTML = guess.name;
-            cell2.id = `nameCell${guessNo}`;
             if (unit === 'imperial') {
                 cell3.innerHTML = `${Math.round(distance.miles * 10) / 10} mi`;
             } else {
                 cell3.innerHTML = `${Math.round(distance.km * 10) / 10} km`;
             }
-            cell3.id = `distanceCell${guessNo}`;
+            cell3.id = `distanceCell${guessNo - 1}`; // unique id must be given for converting
+            console.log(`created cell ${cell3.id}`);
             cell4.innerHTML = ' ';
             cell4.appendChild(arrow);
 
@@ -979,9 +1002,11 @@ settingsIcon.addEventListener('click', () => {
 })
 document.getElementById('metric').addEventListener('click', function() {
     unit = 'metric';
+    convertUnits('km');
 });
 document.getElementById('imperial').addEventListener('click', function() {
     unit = 'imperial';
+    convertUnits('miles');
 });
 const closeSettings = document.getElementById('closeSettings');
 closeSettings.addEventListener('click', () => {
