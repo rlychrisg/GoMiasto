@@ -44,7 +44,6 @@ let unit = 'imperial';
 // this bit is very long so if your editor doesn't have folding
 // then do a text search for 'arrayend'
 
-
 // {{{
 answerListFull = [
         {name: "Birmingham", lat: "52.485596374699405", lon: "-1.8924272744413595", pixX: "62.69", pixY: "70.75", gametype: "UK Cities"},
@@ -857,16 +856,16 @@ function popUp(result) {
         endGameHeader.textContent = "Correct!";
         if (guessNo == 1) {
             endGamePara.textContent = `What are the odds? You got ${answer.name} on the first try! That brings your streak to ${streakNo}!`
-            copyText = `I just got ${answer.name} on the first go in #GoMiasto - ${selectedGame}, with a win streak of ${streakNo}! \n\nhttps://rlychrisg.github.io/gomiasto/`
+            copyText = `I just got ${answer.name} on the first go in #GoMiasto - ${selectedGame}, ${difficultyMode}, with a win streak of ${streakNo}! \n\nhttps://rlychrisg.github.io/gomiasto/`
         } else {
             endGamePara.textContent = `That's correct, it's ${answer.name}! You got this round in ${guessNo} attempts, bringing your win streak to ${streakNo}!`
-            copyText = `I just guessed ${answer.name} in ${guessNo} attempts on #GoMiasto - ${selectedGame}! That brings my win streak to ${streakNo}. \n\nhttps://rlychrisg.github.io/gomiasto/`;
+            copyText = `I just guessed ${answer.name} in ${guessNo} attempts on #GoMiasto - ${selectedGame}, ${difficultyMode}! That brings my win streak to ${streakNo}. \n\nhttps://rlychrisg.github.io/gomiasto/`;
         }
     } else {
         endGameHeader.textContent = "Game Over!";
         endGamePara.textContent = `Unlucky, the correct answer was ${answer.name}. Your win streak was ${streakNo}`
 
-        copyText = `Curse you, ${answer.name}!! I just lost a streak of ${streakNo} in #GoMiasto - ${selectedGame}! \n\nhttps://rlychrisg.github.io/GoMiasto/`;
+        copyText = `Curse you, ${answer.name}!! I just lost a streak of ${streakNo} in #GoMiasto - ${selectedGame}, ${difficultyMode}! \n\nhttps://rlychrisg.github.io/GoMiasto/`;
     }
     // boiler plate code to copy to clipboard
     const copyContent = async () => {
