@@ -575,6 +575,7 @@ function setMap(mbSrc, mbAlt) {
     mapPic.id = 'mapPic';
     mapPic.alt = `${mbAlt}`;
     mapBox.appendChild(mapPic);
+    mapBox.style.display = 'inline-block';
 }
 
 
@@ -585,11 +586,16 @@ function setMap(mbSrc, mbAlt) {
 function createGameUk() {
     selectedGame = "UK Cities";
 
-    mapBox.style.height = '400px';
-    mapBox.style.display = 'inline-block';
-
-    mapAlt = "A silhouette of the United Kingdom";
-    setMap('uk_400', mapAlt);
+    if (window.innerHeight < 599) {
+        mapBox.style.height = '242px';
+    } else if (window.innerHeight >= 600 && window.innerHeight < 799) {
+        mapBox.style.height = '345px';
+    } else if (window.innerHeight >= 800 && window.innerHeight < 1079) {
+        mapBox.style.height = '400px';
+    } else {
+        mapBox.style.height = '562px';
+    }
+    setMap('uk_400', "A silhouette of the United Kingdom");
 
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
     answersArray = answerList.map((a) => { // this is for the autocomplete
@@ -602,11 +608,22 @@ function createGameUs() {
     goHead = document.getElementById('gameHeader');   // because i left too much white space on top of usa.png
     goHead.style.marginBottom = '0px';              // and this is easier than lining up a modified verion
 
-    mapBox.style.height = '400px';
-    mapBox.style.display = 'inline-block';
-
-    mapAlt = "A silhouette of the USA";
-    setMap('usa_400', mapAlt);
+    if (window.innerWidth < 374) {
+        mapBox.style.height = '151px';
+    } else if (window.innerWidth >= 375 && window.innerWidth < 439) {
+        mapBox.style.height = '174px';
+    } else if (window.innerWidth >= 440 && window.innerWidth < 539) {
+        mapBox.style.height = '215px';
+    } else if (window.innerWidth >= 540 && window.innerWidth < 654) {
+        mapBox.style.height = '263px';
+    } else if (window.innerWidth >= 655 && window.innerWidth < 990) {
+        mapBox.style.height = '324px';
+    } else if (window.innerWidth >= 800 && window.innerHeight < 900) {
+        mapBox.style.height = '324px';
+    } else {
+        mapBox.style.height = '491px';
+    }
+    setMap('usa_400', "A silhouette of the USA");
 
 
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
@@ -618,11 +635,22 @@ function createGameUs() {
 function createGameMcr() {
     selectedGame = "Manchester Metrolink";
 
-    mapBox.style.height = '400px';
-    mapBox.style.display = 'inline-block';
-
-    mapAlt = "A silhouette of the Greater Manchester";
-    setMap('metro', mapAlt);
+    if (window.innerWidth <= 380) {
+        mapBox.style.height = '228px';
+    } else if (window.innerWidth > 380 && window.innerWidth <= 460) {
+        mapBox.style.height = '261px';
+    } else if (window.innerWidth > 460 && window.innerWidth <= 545) {
+        mapBox.style.height = '323px';
+    } else if (window.innerWidth > 460 && window.innerWidth <= 545) {
+        mapBox.style.height = '397px';
+    } else if (window.innerWidth > 545 && window.innerHeight <= 900) {
+        mapBox.style.height = '397px';
+    } else if (window.innerWidth > 545 && window.innerWidth <= 765 && window.innerHeight > 900) {
+        mapBox.style.height = '397px';
+    } else {
+        mapBox.style.height = '458px';
+    }
+    setMap('metro', "A silhouette of the Greater Manchester");
 
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
     answersArray = answerList.map((a) => { // for autocomplete
