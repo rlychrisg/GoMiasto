@@ -892,14 +892,34 @@ function popUp(result) {
     }
 }
 
+
+function difficultyModeSelect(mode) {
+    if (mode === 'fun') {
+        maxGuesses = 999;
+        difficultyMode = 'Fun';
+    } else if (mode === 'easy') {
+        maxGuesses = 10;
+        difficultyMode = 'Easy';
+    } else if (mode === 'medium') {
+        maxGuesses = 6;
+        difficultyMode = 'Medium';
+    } else if (mode === 'hard') {
+        maxGuesses = 4;
+        difficultyMode = 'Hard';
+    }
+    clearTable();
+    streakNo = 0;
+    settingsBox.close();
+    console.log(`Difficulty mode changed to ${difficultyMode}. max guesses is now ${maxGuesses}, win streak is now ${streakNo}`);
+}
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
 // some variables..
 let distance;
-const maxGuesses = 6;
+let maxGuesses = 6;
 let streakNo = 0;
 
 // make processing the guess a funtion that can be called by pressing enter or pressing the button
@@ -998,10 +1018,22 @@ document.getElementById('imperial').addEventListener('click', function() {
     unit = 'imperial';
     convertUnits('miles');
 });
+document.getElementById('difficultyFunBtn').addEventListener('click', function() {
+    difficultyModeSelect('fun');
+});
+document.getElementById('difficultyEasyBtn').addEventListener('click', function() {
+    difficultyModeSelect('easy');
+});
+document.getElementById('difficultyMediumBtn').addEventListener('click', function() {
+    difficultyModeSelect('medium');
+});
+document.getElementById('difficultyHardBtn').addEventListener('click', function() {
+    difficultyModeSelect('hard');
+});
 const closeSettings = document.getElementById('closeSettings');
 closeSettings.addEventListener('click', () => {
     settingsBox.close();
-})
+});
 
 // function to inform of invalid guess.
 function invalidGuess() {
