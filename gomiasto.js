@@ -600,6 +600,7 @@ function createGameUk() {
     answersArray = answerList.map((a) => { // this is for the autocomplete
         return a.name;
     });
+    difficultyModeSelect('medium');
 }
 
 function createGameUs() {
@@ -629,6 +630,7 @@ function createGameUs() {
     answersArray = answerList.map((a) => { // for autocomplete
         return a.name;
     });
+    difficultyModeSelect('medium');
 }
 
 function createGameMcr() {
@@ -651,10 +653,12 @@ function createGameMcr() {
     }
     setMap('metro', "A silhouette of the Greater Manchester");
 
+
     answerList = answerListFull.filter(x => x.gametype == selectedGame);
     answersArray = answerList.map((a) => { // for autocomplete
         return a.name;
     });
+    difficultyModeSelect('medium');
 }
 
 
@@ -863,7 +867,7 @@ function popUp(result) {
         }
     } else {
         endGameHeader.textContent = "Game Over!";
-        endGamePara.textContent = `Unlucky, the correct answer was ${answer.name}. Your win streak was ${streakNo}`
+        endGamePara.textContent = `Unlucky, the correct answer was ${answer.name}. Your win streak was ${streakNo}. \n\n Having difficulties? Try an easier game mode in the settings menu.`;
 
         copyText = `Curse you, ${answer.name}!! I just lost a streak of ${streakNo} in #GoMiasto - ${selectedGame}, ${difficultyMode} mode! \n\nhttps://rlychrisg.github.io/GoMiasto/`;
     }
