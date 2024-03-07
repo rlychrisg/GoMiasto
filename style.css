@@ -32,11 +32,11 @@ h2 {
     color: var(--foreground-alt);
     font-size: 2rem;
     letter-spacing: -0.1rem;
-    padding: 0.2em;
+    padding: 0.4em 0.4em 0.2em 0.4em;
 }
 p {
     color: var(--foreground);
-    padding: 0.4em;
+    padding: 0.4em 0.2em 0.7em 0.4em;
 }
 #gameHeader {
     background: var(--background-alt);
@@ -93,7 +93,10 @@ p {
     border: 2px solid var(--border);
     border-radius: 5px;
 }
+
 button {
+    font-size: 1.2rem;
+    border: 2px solid var(--border);
     border-radius: 5px;
     color: var(--border);
     padding: 0.2em 0.5em;
@@ -119,9 +122,6 @@ input {
 }
 input::placeholder {
     color: var(--highlight);
-}
-#submitBtn {
-    font-size: 1.1rem;
 }
 .autocomplete-wrapper {
     display: inline-block;
@@ -152,7 +152,7 @@ input::placeholder {
     width: 100%;
     text-align: Left;
 }
-.autocomplete-list button:hover, button:focus {
+.autocomplete-list, button:focus {
   background-color: var(--highlight) ;
   color: var(--border);
 }
@@ -233,10 +233,6 @@ td:nth-child(4) {
 }
 .gameTypeBtn {
     width: 90%;
-    border: 2px solid var(--border);
-    padding: 0.2em;
-    font-size: 1.3rem;
-    background: var(--action);
 }
 .gameTypeBtn:focus {
     background: var(--action-highlight);
