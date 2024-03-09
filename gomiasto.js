@@ -23,18 +23,14 @@ window.onload = function() {
 document.getElementById("gameTypeUkCities").addEventListener("click", function() {
     createGameUk();
     chooseGameBox.close();
-    clearTable();
-
 })
 document.getElementById("gameTypeUsCities").addEventListener("click", function() {
     createGameUs();
     chooseGameBox.close();
-    clearTable();
 })
 document.getElementById("gameTypeMcrMetro").addEventListener("click", function() {
     createGameMcr();
     chooseGameBox.close();
-    clearTable();
 })
 
 
@@ -601,6 +597,7 @@ function createGameUk() {
         return a.name;
     });
     difficultyModeSelect('medium');
+    console.log(`New game started. ${selectedGame}, ${difficultyMode}`);
 }
 
 function createGameUs() {
@@ -631,6 +628,7 @@ function createGameUs() {
         return a.name;
     });
     difficultyModeSelect('medium');
+    console.log(`New game started. ${selectedGame}, ${difficultyMode}`);
 }
 
 function createGameMcr() {
@@ -659,6 +657,7 @@ function createGameMcr() {
         return a.name;
     });
     difficultyModeSelect('medium');
+    console.log(`New game started. ${selectedGame}, ${difficultyMode}`);
 }
 
 
@@ -675,7 +674,7 @@ function addMarker(name, x, y, z) {
     getCompassDirection(z);
     mapArrow.alt = `An arrow placed over ${name}, pointing in the direction of ${compassDirection}`;
     mapBox.appendChild(mapArrow);
-
+    console.log(`Placing arrow at ${x} x ${y}, ${z}deg`);
 }
 
 
@@ -695,7 +694,7 @@ function clearTable() {
     // pick an answer at random
     answer = answerList[(Math.floor(Math.random() * answerList.length))];
     // answer = getTheDeets('salford');  // leave this in and uncomment if i need to fix the game
-    console.log('new game started');
+    console.log(`New round started. Difficulty: ${difficultyMode} streak: ${streakNo} guess: ${guessNo} of ${maxGuesses}`);
 }
 
 // functions to create and manage autocomplete menu
@@ -750,7 +749,7 @@ function onSuggestionBtnClick(e) {
     e.preventDefault();
     const suggestion = e.target;
     cityInput.value = suggestion.textContent;
-    console.log(suggestion.textContent);
+    console.log(`Submitting suggestion entry ${suggestion.textContent}`);
     removeDropdown();
     processGuess();
 }
@@ -938,8 +937,11 @@ function processGuess($event) {
     event.preventDefault();
     removeDropdown();
     let guess = getTheDeets(cityInput.value);
+    console.log(`Input: ${cityInput.value}`);
+
     if (guess) {
         cityInput.value = ''; // clear the field, this may cause issues if misplaced
+        console.log(`${guess.name} lat: ${guess.lat} lon: ${guess.lon}`);
 
         // correct answer
         if (guess.name === answer.name) {
@@ -948,14 +950,20 @@ function processGuess($event) {
                   confettiRadius: 3,
                   confettiNumber: 500,
             })
+            console.log(`Correct guess. Streak increased to ${streakNo}`);
             popUp('win');
         // out of guesses
         } else if (guessNo === maxGuesses) {
             popUp('lose');
             streakNo = 0;
+            console.log(`Incorrect guess. Streak is now ${streakNo}`);
         // information given on incorrect guess
         } else if (guess.name) {
             distance = getDistance(guess.lat, guess.lon, answer.lat, answer.lon);
+
+            console.log(`Giving info for incorrect guess: ${guess.name}`);
+            console.log(`Distance from answer: ${distance.miles} miles / ${distance.km} km`);
+            console.log(`Direction to answer: ${distance.bearing}`);
 
             // create an arrow for the table
             const arrow = document.createElement('img');
@@ -991,13 +999,13 @@ function processGuess($event) {
                 cell3.innerHTML = `${Math.round(distance.km * 10) / 10} km`;
             }
             cell3.id = `distanceCell${guessNo - 1}`; // unique id must be given for converting
-            console.log(`created cell ${cell3.id}`);
             cell4.innerHTML = ' ';
             cell4.appendChild(arrow);
 
             // update details
             guessNo++;
             row++;
+            console.log(`Guess ${guessNo} of ${maxGuesses}`);
         }
     } else {
         console.log(`Invalid guess: ${cityInput.value}`);
