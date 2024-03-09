@@ -6,7 +6,7 @@
 
 [Click here to play](https://rlychrisg.github.io/GoMiasto/)
 
-Guess a city or location to win. You have only 6 attempts, but each incorrect guess will give you the distance and direction to help with your next guess. Distance is given 'as the crow flies' and the location of the pin drop will typically be the city centre. Only valid answers can be submitted but if you're unsure then suggestions will pop up once you start typing.
+Guess a city or location to win. Each incorrect guess will give you the distance and direction to help with your next guess. Distance is given 'as the crow flies' and the location of the pin drop will typically be the city centre. Only valid answers can be submitted but if you're unsure then suggestions will pop up once you start typing.
 
 In the settings menu, players can choose to measure distance in either Miles or Km, as well as choose from four difficulty levels.
 
@@ -19,5 +19,6 @@ This game functions (and nobody can take that away from me!) but it is quite cle
 
 ## THANKYOUUUS
 + Once again, the makers of [Worldle](https://worldle.teuteuf.fr/) for creating a great game which I have played daily for years.
++ The [Catppuccin](https://github.com/catppuccin/catppuccin/tree/main) team for making a really nice theme that will hopefully keep light theme fans happy, as well as dark theme fans like myself.
 + LoonyWizard for [JS-Confetti](https://github.com/loonywizard/js-confetti).
 
