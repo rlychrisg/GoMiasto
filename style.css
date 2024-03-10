@@ -120,6 +120,10 @@ input {
     border: 2px solid var(--border);
     border-radius:5px;
 }
+#submitBtn {
+    padding: 0.2em;
+    font-size: 1.1rem;
+}
 input::placeholder {
     color: var(--highlight);
 }
