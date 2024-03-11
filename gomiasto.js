@@ -10,6 +10,7 @@ const endGame = document.getElementById("endGame");
 const endGameHeader = document.getElementById("endGameHeader");
 const endGamePara = document.getElementById("endGamePara");
 const aboutBox = document.getElementById("aboutBox");
+const aboutPara = document.getElementById('aboutPara');
 const mapBox = document.getElementById('mapBox');
 const chooseGameBox = document.getElementById('chooseGameBox');
 const aboutIcon = document.getElementById('aboutIcon');
@@ -596,6 +597,7 @@ function createGameUk() {
     answersArray = answerList.map((a) => { // this is for the autocomplete
         return a.name;
     });
+    aboutPara.innerHTML = "<b>UK Cities:</b> Guess from a list of cities in the UK. That is, 76 locations which have been given city status. Some of these you might not have heard of, and there are some areas you might be surprised aren't on the list. For more information, have a look at the <a href='https://en.wikipedia.org/wiki/List_of_cities_in_the_United_Kingdom' target='_blank'>Wikipedia entry for UK cities</a>, and in the future, look out for a version of this game which uses urban areas instead.";
     difficultyModeSelect('medium');
     console.log(`New game started. ${selectedGame}, ${difficultyMode}`);
 }
@@ -627,6 +629,7 @@ function createGameUs() {
     answersArray = answerList.map((a) => { // for autocomplete
         return a.name;
     });
+    aboutPara.innerHTML = "<b>US Cities:</b> The 333 cities in the <a href='https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population' target='_blank'>Wikipedia</a> list. All cities have a population above 100k. This may change, because why should Delaware miss out on all the fun?"
     difficultyModeSelect('medium');
     console.log(`New game started. ${selectedGame}, ${difficultyMode}`);
 }
