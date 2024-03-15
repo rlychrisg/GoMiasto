@@ -862,10 +862,10 @@ function popUp(result) {
         endGameHeader.textContent = "Correct!";
         if (guessNo == 1) {
             endGamePara.textContent = `What are the odds? You got ${answer.name} on the first try! That brings your streak to ${streakNo}!`
-            copyText = `I just got ${answer.name} on the first go in #GoMiasto - ${selectedGame}, ${difficultyMode} mode, with a win streak of ${streakNo}! \n\nhttps://rlychrisg.github.io/gomiasto/`
+            copyText = `I just got ${answer.name} on the first go in #GoMiasto - ${selectedGame}, ${difficultyMode} mode, with a win streak of ${streakNo}! \n\nhttps://rlychrisg.github.io/GoMiasto/`
         } else {
             endGamePara.textContent = `That's correct, it's ${answer.name}! You got this round in ${guessNo} attempts, bringing your win streak to ${streakNo}!`
-            copyText = `I just guessed ${answer.name} in ${guessNo} attempts on #GoMiasto - ${selectedGame}, ${difficultyMode} mode! That brings my win streak to ${streakNo}. \n\nhttps://rlychrisg.github.io/gomiasto/`;
+            copyText = `I just guessed ${answer.name} in ${guessNo} attempts on #GoMiasto - ${selectedGame}, ${difficultyMode} mode! That brings my win streak to ${streakNo}. \n\nhttps://rlychrisg.github.io/GoMiasto/`;
         }
     } else {
         endGameHeader.textContent = "Game Over!";
