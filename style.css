@@ -95,7 +95,7 @@ p {
 }
 
 button {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border: 2px solid var(--border);
     border-radius: 5px;
     color: var(--border);
