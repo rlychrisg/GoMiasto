@@ -939,7 +939,7 @@ let streakNo = 0;
 function processGuess($event) {
     event.preventDefault();
     removeDropdown();
-    let guess = getTheDeets(cityInput.value);
+    let guess = getTheDeets(cityInput.value.trim()); // trim trailing spaces to prevent invalid guess. a bit messy.
     console.log(`Input: ${cityInput.value}`);
 
     if (guess) {
